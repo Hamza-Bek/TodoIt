@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96cb7c2c-121b-4799-90d4-21cd74989510" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoIt.sln" beforeDir="false" afterPath="$PROJECT_DIR$/TodoIt.sln" afterDir="false" />
-    </list>
+    <list default="true" id="96cb7c2c-121b-4799-90d4-21cd74989510" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +60,7 @@
       <workItem from="1739053956974" duration="1765000" />
       <workItem from="1739092117110" duration="236000" />
       <workItem from="1739092359913" duration="1133000" />
+      <workItem from="1739099355320" duration="176000" />
     </task>
     <servers />
   </component>
