@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class NoteFolder
+    public class NoteFolder : EntityBase
     {
-        public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public ICollection<Note>? Notes { get; set; }
         public Guid OwnerId { get; set; }
