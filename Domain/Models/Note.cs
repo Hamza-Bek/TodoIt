@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class Note
+    public class Note : EntityBase
     {
-        public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
-        public string Content { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public string Content { get; set; } = string.Empty;                
         public bool IsPined { get; set; }
         public Guid OwnerId { get; set; }
         public ApplicationUser? Owner { get; set; } 

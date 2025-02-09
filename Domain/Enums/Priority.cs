@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum PriorityLevel
+    public enum Priority
     {
         None,
         Low,
