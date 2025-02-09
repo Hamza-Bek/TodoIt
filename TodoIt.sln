@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{372A9AA6-BAB2-4A0A-9EBC-26EE8138ED2E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{9DE7C55E-1569-4E9D-AD70-BF9C84D32E17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{544CEC7C-005A-4E42-A763-C6BB3964BD0A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{D07AC91C-11A8-4F9E-97F3-AFBE613BFA13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{AB570220-FFD5-48C6-826C-14C9510597E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{0DC2DE2A-3B4B-446B-899C-844BD7AB4A44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{9DE7C55E-1569-4E9D-AD70-BF9C84D32E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DE7C55E-1569-4E9D-AD70-BF9C84D32E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DE7C55E-1569-4E9D-AD70-BF9C84D32E17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{544CEC7C-005A-4E42-A763-C6BB3964BD0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{544CEC7C-005A-4E42-A763-C6BB3964BD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{544CEC7C-005A-4E42-A763-C6BB3964BD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{544CEC7C-005A-4E42-A763-C6BB3964BD0A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D07AC91C-11A8-4F9E-97F3-AFBE613BFA13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D07AC91C-11A8-4F9E-97F3-AFBE613BFA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D07AC91C-11A8-4F9E-97F3-AFBE613BFA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,12 +31,15 @@ Global
 		{AB570220-FFD5-48C6-826C-14C9510597E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB570220-FFD5-48C6-826C-14C9510597E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB570220-FFD5-48C6-826C-14C9510597E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC2DE2A-3B4B-446B-899C-844BD7AB4A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC2DE2A-3B4B-446B-899C-844BD7AB4A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC2DE2A-3B4B-446B-899C-844BD7AB4A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC2DE2A-3B4B-446B-899C-844BD7AB4A44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9DE7C55E-1569-4E9D-AD70-BF9C84D32E17} = {372A9AA6-BAB2-4A0A-9EBC-26EE8138ED2E}
-		{544CEC7C-005A-4E42-A763-C6BB3964BD0A} = {372A9AA6-BAB2-4A0A-9EBC-26EE8138ED2E}
 	EndGlobalSection
 EndGlobal
