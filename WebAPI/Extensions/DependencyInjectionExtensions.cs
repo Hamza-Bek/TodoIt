@@ -33,7 +33,7 @@ public static class DependencyInjectionExtensions
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(databaseOptions.ConnectionString, b => b.MigrationsAssembly("WebAPI")));
 
-        services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+        services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
         {
             options.Lockout.AllowedForNewUsers = lockoutOptions.AllowedForNewUsers;
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(lockoutOptions.DefaultLockoutTimeSpan);
