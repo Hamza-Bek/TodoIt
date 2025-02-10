@@ -11,7 +11,7 @@ namespace Application.Dtos.Note
     {
         public string Title { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
-        public bool IsPined { get; set; }                
+        public bool Pinned { get; set; }                
         public Guid FolderId { get; set; }        
     }
 }
