@@ -1,5 +1,7 @@
+using System.Security.Claims;
 using Application.Dtos.Todo;
 using Application.Interfaces;
+using Application.Options;
 using Domain.Models;
 using Infrastructure.Data;
 using Infrastructure.Options;
@@ -60,7 +62,28 @@ public static class DependencyInjectionExtensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<ITodoRepository, TodoRepository>();
+        services.AddScoped<UserIdentity>(sp =>
+        {
+            var userIdentity = new UserIdentity();
+            var httpContextAccessor = sp.GetRequiredService<IHttpContextAccessor>();
+            var httpContext = httpContextAccessor.HttpContext;
 
+            if (httpContext?.User?.Identity?.IsAuthenticated == true)
+            {
+                var userId = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if(Guid.TryParse(userId, out var id))
+                {
+                    userIdentity.Id = id;
+                }
+            } 
+            
+            // if (httpContext is not null && httpContext.User.Identity is not null)
+            // {
+            //     userIdentity.Id = Guid.TryParse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            // }
+
+            return userIdentity;
+        });
         return services;
     }
 }
