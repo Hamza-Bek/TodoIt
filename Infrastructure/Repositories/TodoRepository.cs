@@ -2,6 +2,7 @@ using Application.Dtos.Todo;
 using Application.Interfaces;
 using Application.Mappers;
 using Application.Options;
+using Domain.Enums;
 using Domain.Models;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -12,19 +13,42 @@ public class TodoRepository : ITodoRepository
 {
     private readonly ApplicationDbContext _context;
     private readonly UserIdentity _userIdentity;
+    
     public TodoRepository(ApplicationDbContext context, UserIdentity userIdentity)
     {
         _context = context;
         _userIdentity = userIdentity;
     }
 
-    public async Task<IEnumerable<Todo>> GetTodosAsync()
+    public async Task<IEnumerable<Todo>> GetTodosAsync(TodoSearchDto searchDto)
     {
-        var todos = await _context.Todos
-            .Where(i => i.OwnerId == _userIdentity.Id)
-            .ToListAsync();
+        var today = DateTime.Today;
         
-        return todos;
+        var query = _context.Todos.AsQueryable();
+        
+        query = query.Where(i => i.OwnerId == _userIdentity.Id);
+        
+        // CHECK IF ANY FILTER IS APPLIED IF NOT RETURN ALL TODOS
+        bool IsFilterApplied = searchDto.Pinned || searchDto.Completed || searchDto.OverDue || searchDto.TodosDay; 
+        
+        // RETURN ALL TODOS THAT ARE PINNED
+        if (searchDto.Pinned)
+            query = query.Where(i => i.Pinned == searchDto.Pinned);
+        
+        // RETURN ALL TODOS THAT ARE COMPLETED
+        if (searchDto.Completed)
+            query = query.Where(i => i.Completed == searchDto.Completed);
+        
+        // RETURN ALL TODOS THAT ARE OVERDUE
+        if (searchDto.OverDue)
+            query = query.Where(i => i.CreatedAt.Date < today && i.Completed == false);
+
+        // RETURN ALL TODOS CREATED TODAY
+        if (searchDto.TodosDay)
+            query = query.Where(i => i.CreatedAt.Date == today);
+        
+        
+        return IsFilterApplied ? await query.ToListAsync() : await _context.Todos.Where(i => i.OwnerId == _userIdentity.Id).ToListAsync();
     }
 
     public async Task<Todo> GetTodoByIdAsync(Guid todoId)
