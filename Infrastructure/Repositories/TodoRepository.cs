@@ -1,32 +1,88 @@
+using Application.Dtos.Todo;
 using Application.Interfaces;
+using Application.Mappers;
+using Application.Options;
 using Domain.Models;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
 public class TodoRepository : ITodoRepository
 {
-    public Task<IEnumerable<Todo>> GetTodosAsync()
+    private readonly ApplicationDbContext _context;
+    private readonly UserIdentity _userIdentity;
+    public TodoRepository(ApplicationDbContext context, UserIdentity userIdentity)
     {
-        throw new NotImplementedException();
+        _context = context;
+        _userIdentity = userIdentity;
     }
 
-    public Task<Todo> GetTodoByIdAsync(Guid id)
+    public async Task<IEnumerable<Todo>> GetTodosAsync()
     {
-        throw new NotImplementedException();
+        var todos = await _context.Todos
+            .Where(i => i.OwnerId == _userIdentity.Id)
+            .ToListAsync();
+        
+        return todos;
     }
 
-    public Task<Todo> AddTodoAsync(Todo todo)
+    public async Task<Todo> GetTodoByIdAsync(Guid todoId)
     {
-        throw new NotImplementedException();
+        var todo = await _context.Todos
+            .FirstOrDefaultAsync(i => i.Id == todoId && i.OwnerId == _userIdentity.Id);
+
+        return todo!;
     }
 
-    public Task<Todo> UpdateTodoAsync(Guid id,Todo todo)
+    public async Task<Todo> AddTodoAsync(Todo todo)
     {
-        throw new NotImplementedException();
+        var newTodo = new Todo
+        {
+            Id = Guid.NewGuid(),
+            Title = todo.Title,
+            Description = todo.Description,
+            Completed = todo.Completed,
+            CreatedAt = DateTime.UtcNow,
+            Priority = todo.Priority,
+            Pinned = todo.Pinned,
+            Overdue = todo.Overdue,
+            OwnerId = _userIdentity.Id
+        };
+
+        _context.Todos.Add(newTodo);
+        await _context.SaveChangesAsync();
+
+        return newTodo;
     }
 
-    public Task<bool> DeleteTodoAsync(Guid id)
+    public async Task<Todo> UpdateTodoAsync(Guid id,Todo todo)
     {
-        throw new NotImplementedException();
+        var todoToUpdate = await _context.Todos.FindAsync(id);
+        if (todoToUpdate is not null)
+            return null!;
+
+        todoToUpdate.Title = todo.Title;
+        todoToUpdate.Description = todo.Description;
+        todoToUpdate.Completed = todo.Completed;
+        todoToUpdate.ModifiedAt = DateTime.UtcNow;
+        todoToUpdate.Priority = todo.Priority;
+        todoToUpdate.Pinned = todo.Pinned;
+        todoToUpdate.Overdue = todo.Overdue;
+
+        await _context.SaveChangesAsync();
+
+        return todoToUpdate;
+    }
+    
+    public async Task<bool> DeleteTodoAsync(Guid id)
+    {
+        var todo = await _context.Todos.FindAsync(id);
+        if (todo is null)
+            return false;
+        
+        _context.Todos.Remove(todo); 
+        await _context.SaveChangesAsync(); 
+        return true;
     }
 }
