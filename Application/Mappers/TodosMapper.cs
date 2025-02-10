@@ -20,4 +20,20 @@ public static class TodosMapper
             Overdue = todo.Overdue
         };
     } 
+    
+    public static Todo ToModel(this TodoDto todoDto)
+    {
+        return new Todo
+        {
+            Id = todoDto.Id,
+            Title = todoDto.Title,
+            Description = todoDto.Description,
+            Completed = todoDto.Completed,
+            CreatedAt = todoDto.CreatedAt,
+            ModifiedAt = todoDto.ModifiedAt,
+            Priority = todoDto.Priority,
+            Pinned = todoDto.Pinned,
+            Overdue = todoDto.Overdue
+        };
+    }
 }

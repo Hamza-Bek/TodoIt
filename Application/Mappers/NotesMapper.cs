@@ -18,4 +18,18 @@ public static class NotesMapper
             FolderId = note.FolderId
         };
     }
+
+    public static Note ToModel(this NoteDto noteDto)
+    {
+        return new Note
+        {
+            Id = noteDto.Id,
+            Title = noteDto.Title,
+            Content = noteDto.Content,
+            CreatedAt = noteDto.CreatedAt,
+            ModifiedAt = noteDto.ModifiedAt,
+            Pinned = noteDto.Pinned,
+            FolderId = noteDto.FolderId
+        };
+    }
 }

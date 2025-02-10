@@ -15,4 +15,15 @@ public static class FoldersMapper
             ModifiedAt = folder.ModifiedAt
         };
     }
+    
+    public static Folder ToModel(this FolderDto folderDto)
+    {
+        return new Folder()
+        {
+            Id = folderDto.Id,
+            Title = folderDto.Title,
+            CreatedAt = folderDto.CreatedAt,
+            ModifiedAt = folderDto.ModifiedAt
+        };
+    }
 }
