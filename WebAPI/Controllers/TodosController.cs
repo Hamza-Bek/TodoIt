@@ -18,10 +18,10 @@ public class TodosController : ControllerBase
         _todoRepository = todoRepository;
     }
 
-    [HttpGet("get/all")]
-    public async Task<IActionResult> GetTodos()
+    [HttpPost("get/all")]
+    public async Task<IActionResult> GetTodos([FromBody]TodoSearchDto searchDto)
     {
-        var respone = await _todoRepository.GetTodosAsync();    
+        var respone = await _todoRepository.GetTodosAsync(searchDto);    
         
         return Ok(new ApiResponse<IEnumerable<Todo>>()
         {
