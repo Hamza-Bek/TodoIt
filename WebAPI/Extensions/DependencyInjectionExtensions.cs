@@ -62,6 +62,7 @@ public static class DependencyInjectionExtensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<ITodoRepository, TodoRepository>();
+        services.AddScoped<INoteRepository, NoteRepository>();
         services.AddScoped<UserIdentity>(sp =>
         {
             var userIdentity = new UserIdentity();
