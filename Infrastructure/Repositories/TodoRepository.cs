@@ -13,45 +13,37 @@ public class TodoRepository : ITodoRepository
 {
     private readonly ApplicationDbContext _context;
     private readonly UserIdentity _userIdentity;
-    
+
     public TodoRepository(ApplicationDbContext context, UserIdentity userIdentity)
     {
         _context = context;
         _userIdentity = userIdentity;
     }
 
-    public async Task<IEnumerable<Todo>> GetTodosAsync(TodoSearchDto searchDto)
+    public async Task<IEnumerable<Todo>> GetTodosAsync(TodoFilterCriteria filter, CancellationToken cancellationToken = default)
     {
-        var today = DateTime.Today;
-        
+        var today = DateTime.UtcNow.Date;
+
         var query = _context.Todos.AsQueryable();
-        
-        query = query.Where(i => i.OwnerId == _userIdentity.Id);
-        
-        // CHECK IF ANY FILTER IS APPLIED IF NOT RETURN ALL TODOS
-        bool IsFilterApplied = searchDto.Pinned || searchDto.Completed || searchDto.OverDue || searchDto.TodosDay; 
-        
-        // RETURN ALL TODOS THAT ARE PINNED
-        if (searchDto.Pinned)
-            query = query.Where(i => i.Pinned == searchDto.Pinned);
-        
-        // RETURN ALL TODOS THAT ARE COMPLETED
-        if (searchDto.Completed)
-            query = query.Where(i => i.Completed == searchDto.Completed);
-        
-        // RETURN ALL TODOS THAT ARE OVERDUE
-        if (searchDto.OverDue)
+
+        query = query.Where(i => i.OwnerId == _userIdentity.Id && i.DueDate.Date == filter.DueDate);
+
+        if (filter.Pinned)
+            query = query.Where(i => i.Pinned == filter.Pinned);
+
+        if (filter.Completed)
+            query = query.Where(i => i.Completed == filter.Completed);
+
+        if (filter.Overdue)
             query = query.Where(i => i.CreatedAt.Date < today && i.Completed == false);
 
-        // RETURN ALL TODOS CREATED TODAY
-        if (searchDto.TodosDay)
-            query = query.Where(i => i.CreatedAt.Date == today);
-        
-        
-        return IsFilterApplied ? await query.ToListAsync() : await _context.Todos.Where(i => i.OwnerId == _userIdentity.Id).ToListAsync();
+        if (filter.Priority != null)
+            query = query.Where(i => i.Priority == filter.Priority);
+
+        return await query.ToListAsync(cancellationToken);
     }
 
-    public async Task<Todo> GetTodoByIdAsync(Guid todoId)
+    public async Task<Todo?> GetTodoByIdAsync(Guid todoId)
     {
         var todo = await _context.Todos
             .FirstOrDefaultAsync(i => i.Id == todoId && i.OwnerId == _userIdentity.Id);
@@ -71,7 +63,8 @@ public class TodoRepository : ITodoRepository
             Priority = todo.Priority,
             Pinned = todo.Pinned,
             Overdue = todo.Overdue,
-            OwnerId = _userIdentity.Id
+            OwnerId = _userIdentity.Id,
+            DueDate = todo.DueDate
         };
 
         _context.Todos.Add(newTodo);
@@ -80,11 +73,11 @@ public class TodoRepository : ITodoRepository
         return newTodo;
     }
 
-    public async Task<Todo> UpdateTodoAsync(Guid id,Todo todo)
+    public async Task<Todo?> UpdateTodoAsync(Guid id, Todo todo)
     {
         var todoToUpdate = await _context.Todos.FindAsync(id);
-        if (todoToUpdate is not null)
-            return null!;
+        if (todoToUpdate is null)
+            return null;
 
         todoToUpdate.Title = todo.Title;
         todoToUpdate.Description = todo.Description;
@@ -93,20 +86,30 @@ public class TodoRepository : ITodoRepository
         todoToUpdate.Priority = todo.Priority;
         todoToUpdate.Pinned = todo.Pinned;
         todoToUpdate.Overdue = todo.Overdue;
+        todoToUpdate.DueDate = todo.DueDate;
 
         await _context.SaveChangesAsync();
 
         return todoToUpdate;
     }
-    
+
     public async Task<bool> DeleteTodoAsync(Guid id)
     {
         var todo = await _context.Todos.FindAsync(id);
         if (todo is null)
             return false;
-        
-        _context.Todos.Remove(todo); 
-        await _context.SaveChangesAsync(); 
+
+        _context.Todos.Remove(todo);
+        await _context.SaveChangesAsync();
         return true;
+    }
+
+    public async Task RescheduleTodosAsync(IEnumerable<Guid> ids, DateTime newDate)
+    {
+        await _context.Todos
+            .Where(t => ids.Contains(t.Id))
+            .ExecuteUpdateAsync(s => s.SetProperty(x => x.Overdue, false)
+            .SetProperty(x => x.DueDate, newDate)
+            .SetProperty(x => x.ModifiedAt, DateTime.UtcNow));
     }
 }

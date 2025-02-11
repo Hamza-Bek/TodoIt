@@ -5,7 +5,7 @@ namespace Application.Mappers;
 
 public static class TodosMapper
 {
-    public static TodoDto ToDto (this Todo todo)
+    public static TodoDto ToDto(this Todo todo)
     {
         return new TodoDto
         {
@@ -17,10 +17,11 @@ public static class TodosMapper
             ModifiedAt = todo.ModifiedAt,
             Priority = todo.Priority,
             Pinned = todo.Pinned,
-            Overdue = todo.Overdue
+            Overdue = todo.Overdue,
+            DueDate = todo.DueDate
         };
-    } 
-    
+    }
+
     public static Todo ToModel(this TodoDto todoDto)
     {
         return new Todo
@@ -33,7 +34,8 @@ public static class TodosMapper
             ModifiedAt = todoDto.ModifiedAt,
             Priority = todoDto.Priority,
             Pinned = todoDto.Pinned,
-            Overdue = todoDto.Overdue
+            Overdue = todoDto.Overdue,
+            DueDate = todoDto.DueDate
         };
     }
 }
