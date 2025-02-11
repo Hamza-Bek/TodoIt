@@ -9,6 +9,7 @@ namespace Domain.Models
         public Priority Priority { get; set; }
         public bool Completed { get; set; }
         public bool Pinned { get; set; }
+        public DateTime DueDate { get; set; }
         public bool Overdue { get; set; }
         public Guid OwnerId { get; set; }
         public ApplicationUser? Owner { get; set; }
