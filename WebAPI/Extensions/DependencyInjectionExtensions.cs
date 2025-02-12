@@ -63,6 +63,7 @@ public static class DependencyInjectionExtensions
     {
         services.AddScoped<ITodoRepository, TodoRepository>();
         services.AddScoped<INoteRepository, NoteRepository>();
+        services.AddScoped<IFolderRepository, FolderRepository>();
         services.AddScoped<UserIdentity>(sp =>
         {
             var userIdentity = new UserIdentity();
