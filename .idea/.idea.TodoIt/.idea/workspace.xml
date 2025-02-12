@@ -8,10 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="">
+    <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="Implement methods for the Note management">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Interfaces/INoteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/INoteRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/NoteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/NoteRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +37,10 @@
     "accountId": "93d166b8-a2c8-4291-ac19-571d3757bc74"
   }
 }]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/2025's projects/TodoIt/Application/Interfaces/INoteRepository.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 7
 }]]></component>
@@ -57,10 +60,24 @@
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Implement methods for the Note management">
+      <option name="closed" value="true" />
+      <created>1739371817162</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739371817162</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implement methods for the Note management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement methods for the Note management" />
+  </component>
 </project>
