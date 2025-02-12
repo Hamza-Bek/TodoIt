@@ -8,25 +8,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7aebe8c1-9b59-4853-9b92-4cc1324349d0" name="Changes" comment="TA-4 : Create Search Object and Implement filtering algo">
-      <change afterPath="$PROJECT_DIR$/Application/Interfaces/INoteRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Repositories/NoteRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Extensions/DependencyInjectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Extensions/DependencyInjectionExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Interfaces/INoteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Interfaces/INoteRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/NoteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/NoteRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DpaMonitoringSettings">
-    <option name="autoShow" value="false" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="TA-2-as-a-user-i-would-like-to-be-able-to-manage-todos" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,165 +38,29 @@
     "accountId": "93d166b8-a2c8-4291-ac19-571d3757bc74"
   }
 }]]></component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://E:/2025's projects/TodoIt/Application/Interfaces/ITodoRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Application/Mappers/TodosMapper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Infrastructure/Repositories/TodoRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Infrastructure/Repositories/TodoRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Extensions/DependencyInjectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Extensions/DependencyInjectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
+  "associatedIndex": 7
 }]]></component>
-  <component name="ProjectId" id="2snm7rOXwUvM7nbWIkrRXVWbW30" />
+  <component name="ProjectId" id="2swZKbA2ntlZ3CYuuOVXj37qUHc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.WebAPI: http.executor": "Run",
-    ".NET Launch Settings Profile.WebAPI: https.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "TA-11-as-a-user-i-would-like-to-be-able-to-manage-notes",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.WebAPI: https">
-    <configuration name="WebAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebAPI/WebAPI.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="WebAPI: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebAPI/WebAPI.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="https" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="7aebe8c1-9b59-4853-9b92-4cc1324349d0" name="Changes" comment="" />
-      <created>1739099548649</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1739099548649</updated>
-      <workItem from="1739099549760" duration="30642000" />
-    </task>
-    <task id="LOCAL-00001" summary="Create mappers for the data models">
-      <option name="closed" value="true" />
-      <created>1739197614311</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1739197614311</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Implement the Todos Controller methods">
-      <option name="closed" value="true" />
-      <created>1739211508269</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1739211508269</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Add Mappers folder">
-      <option name="closed" value="true" />
-      <created>1739211576639</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1739211576639</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add service for UserIdentity">
-      <option name="closed" value="true" />
-      <created>1739211621023</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1739211621023</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Add UserIdentity class">
-      <option name="closed" value="true" />
-      <created>1739211813884</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1739211813884</updated>
-    </task>
-    <task id="LOCAL-00006" summary="TA-4 : Create Search Object and Implement filtering algo">
-      <option name="closed" value="true" />
-      <created>1739226503811</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1739226503811</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Create mappers for the data models" />
-    <MESSAGE value="Implement the Todos Controller methods" />
-    <MESSAGE value="Add Mappers folder" />
-    <MESSAGE value="Add service for UserIdentity" />
-    <MESSAGE value="Add UserIdentity class" />
-    <MESSAGE value="TA-4 : Create Search Object and Implement filtering algo" />
-    <option name="LAST_COMMIT_MESSAGE" value="TA-4 : Create Search Object and Implement filtering algo" />
-  </component>
 </project>
