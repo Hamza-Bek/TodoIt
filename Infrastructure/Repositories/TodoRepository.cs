@@ -28,6 +28,9 @@ public class TodoRepository : ITodoRepository
 
         query = query.Where(i => i.OwnerId == _userIdentity.Id && i.DueDate.Date == filter.DueDate);
 
+        if (!string.IsNullOrWhiteSpace(filter.Title))
+            query = query.Where(i => i.Title.Contains(filter.Title, StringComparison.OrdinalIgnoreCase));
+
         if (filter.Pinned)
             query = query.Where(i => i.Pinned == filter.Pinned);
 
