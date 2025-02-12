@@ -26,6 +26,19 @@ public class FolderRepository : IFolderRepository
         return folders;
     }
 
+    public async Task<IEnumerable<Note>> GetNotesByFolderAsync(Guid folderId)
+    {
+        var folder = await _context.Folders
+            .AnyAsync(f => f.Id == folderId && f.OwnerId == _userIdentity.Id);
+            
+        if(!folder)
+            return Enumerable.Empty<Note>();
+        
+        return await _context.Notes
+            .Where(f => f.FolderId == folderId && f.OwnerId == _userIdentity.Id)
+            .ToListAsync();
+    }
+
     public async Task<Folder> CreateFolderAsync(Folder folder)
     {
         var newFolder = new Folder()

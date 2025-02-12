@@ -9,7 +9,7 @@ namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class NotesController : Controller
+public class NotesController : ControllerBase
 {
     private readonly INoteRepository _noteRepository;
 
