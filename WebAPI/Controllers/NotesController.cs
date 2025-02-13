@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Application.Mappers;
 using Application.Responses;
 using Domain.Models;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -12,10 +13,12 @@ namespace WebAPI.Controllers;
 public class NotesController : ControllerBase
 {
     private readonly INoteRepository _noteRepository;
+    private readonly IValidator<NoteDto> _noteValidator;
 
-    public NotesController(INoteRepository noteRepository)
+    public NotesController(INoteRepository noteRepository, IValidator<NoteDto> noteValidator)
     {
         _noteRepository = noteRepository;
+        _noteValidator = noteValidator;
     }
 
     [HttpGet("get/all")]
@@ -47,6 +50,15 @@ public class NotesController : ControllerBase
     [HttpPost("add")]
     public async Task<IActionResult> AddNote(NoteDto model)
     {
+        var validationResult = await _noteValidator.ValidateAsync(model);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new ApiErrorResponse
+            {
+                ErrorMessage = validationResult.Errors.First().ErrorMessage
+            });
+        }
+        
         var todo = await _noteRepository.AddNoteAsync(model.ToModel());
 
         return Ok(new ApiResponse<NoteDto>
@@ -60,6 +72,15 @@ public class NotesController : ControllerBase
     [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateNote(Guid id, NoteDto model)
     {
+        var validationResult = await _noteValidator.ValidateAsync(model);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new ApiErrorResponse
+            {
+                ErrorMessage = validationResult.Errors.First().ErrorMessage
+            });
+        }
+        
         var response = await _noteRepository.UpdateNoteAsync(id, model.ToModel());
         
         return Ok(new ApiResponse<Note>

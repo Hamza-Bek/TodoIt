@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Application.Responses;
 using Application.Mappers;
 using Domain.Models;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -11,10 +12,12 @@ namespace WebAPI.Controllers;
 public class FoldersController : ControllerBase
 {
     private readonly IFolderRepository _folderRepository;
+    private readonly IValidator<FolderDto> _folderValidator;
 
-    public FoldersController(IFolderRepository folderRepository)
+    public FoldersController(IFolderRepository folderRepository, IValidator<FolderDto> folderValidator)
     {
         _folderRepository = folderRepository;
+        _folderValidator = folderValidator;
     }
 
     [HttpGet("get/all")]
@@ -46,6 +49,15 @@ public class FoldersController : ControllerBase
     [HttpPost("add")]
     public async Task<IActionResult> AddFolder(FolderDto model)
     {
+        var validationResult = await _folderValidator.ValidateAsync(model);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new ApiErrorResponse
+            {
+                ErrorMessage = validationResult.Errors.First().ErrorMessage
+            });
+        }
+        
         var folder = await _folderRepository.CreateFolderAsync(model.ToModel());
         
         return Ok(new ApiResponse<FolderDto>()
@@ -59,6 +71,15 @@ public class FoldersController : ControllerBase
     [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateFolder(Guid folderId, FolderDto model)
     {
+        var validationResult = await _folderValidator.ValidateAsync(model);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new ApiErrorResponse
+            {
+                ErrorMessage = validationResult.Errors.First().ErrorMessage
+            });
+        }
+        
         var folder = await _folderRepository.UpdateFolderAsync(folderId, model.ToModel());
         
         return Ok(new ApiResponse<FolderDto>()
