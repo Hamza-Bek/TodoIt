@@ -3,6 +3,7 @@ using Application.Interfaces;
 using Application.Mappers;
 using Application.Responses;
 using Domain.Models;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -12,10 +13,12 @@ namespace WebAPI.Controllers;
 public class TodosController : ControllerBase
 {
     private readonly ITodoRepository _todoRepository;
+    private readonly IValidator<TodoDto> _todoValidator;
 
-    public TodosController(ITodoRepository todoRepository)
+    public TodosController(ITodoRepository todoRepository, IValidator<TodoDto> todoValidator)
     {
         _todoRepository = todoRepository;
+        _todoValidator = todoValidator;
     }
 
     [HttpPost("get/all")]
@@ -56,6 +59,15 @@ public class TodosController : ControllerBase
     [HttpPost("add")]
     public async Task<IActionResult> AddTodo([FromBody] TodoDto model)
     {
+        var validationResult = await _todoValidator.ValidateAsync(model);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new ApiErrorResponse
+            {
+                ErrorMessage = validationResult.Errors.First().ErrorMessage
+            });
+        }
+        
         var todo = await _todoRepository.AddTodoAsync(model.ToModel());
 
         return Ok(new ApiResponse<TodoDto>
@@ -69,6 +81,15 @@ public class TodosController : ControllerBase
     [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateTodo(Guid id, TodoDto model)
     {
+        var validationResult = await _todoValidator.ValidateAsync(model);
+        if (!validationResult.IsValid)
+        {
+            return BadRequest(new ApiErrorResponse
+            {
+                ErrorMessage = validationResult.Errors.First().ErrorMessage
+            });
+        }
+        
         var todo = await _todoRepository.UpdateTodoAsync(id, model.ToModel());
 
         return Ok(new ApiResponse<TodoDto>
