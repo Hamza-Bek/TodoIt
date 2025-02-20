@@ -51,6 +51,8 @@ public static class DependencyInjectionExtensions
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
+        services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
+
         return services;
     }
 
@@ -71,12 +73,12 @@ public static class DependencyInjectionExtensions
             if (httpContext?.User?.Identity?.IsAuthenticated == true)
             {
                 var userId = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                if(Guid.TryParse(userId, out var id))
+                if (Guid.TryParse(userId, out var id))
                 {
                     userIdentity.Id = id;
                 }
-            } 
-            
+            }
+
             // if (httpContext is not null && httpContext.User.Identity is not null)
             // {
             //     userIdentity.Id = Guid.TryParse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
