@@ -20,11 +20,8 @@ public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
         builder.Property(i => i.ReplacedByToken)
             .HasMaxLength(512);
 
-        builder.Property(i => i.Expires)
+        builder.Property(i => i.ExpiresAt)
             .IsRequired();
-
-        builder.Property(i => i.JwtId)
-            .HasMaxLength(512);
 
         builder.Property(i => i.DeviceName)
             .HasMaxLength(150);
