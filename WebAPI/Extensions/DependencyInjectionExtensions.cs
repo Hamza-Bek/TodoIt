@@ -6,6 +6,7 @@ using Domain.Models;
 using Infrastructure.Data;
 using Infrastructure.Options;
 using Infrastructure.Repositories;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LockoutOptions = Infrastructure.Options.LockoutOptions;
@@ -51,7 +52,13 @@ public static class DependencyInjectionExtensions
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
-        services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
+        var jwtSettings = new JwtSettings();
+        configuration.GetSection("Jwt").Bind(jwtSettings);
+        services.AddScoped(_ => jwtSettings);
+
+        var refreshTokenSettings = new RefreshTokenSettings();
+        configuration.GetSection("RefreshToken").Bind(refreshTokenSettings);
+        services.AddScoped(_ => refreshTokenSettings);
 
         return services;
     }
@@ -64,6 +71,10 @@ public static class DependencyInjectionExtensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<ITodoRepository, TodoRepository>();
+        services.AddScoped<IRefreshTokensRepository, RefreshTokensRepository>();
+        services.AddScoped<ITokensService, TokensService>();
+        services.AddScoped<IAuthRepository, AuthRepository>();
+
         services.AddScoped<UserIdentity>(sp =>
         {
             var userIdentity = new UserIdentity();
@@ -74,16 +85,9 @@ public static class DependencyInjectionExtensions
             {
                 var userId = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 if (Guid.TryParse(userId, out var id))
-                {
                     userIdentity.Id = id;
-                }
+
             }
-
-            // if (httpContext is not null && httpContext.User.Identity is not null)
-            // {
-            //     userIdentity.Id = Guid.TryParse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            // }
-
             return userIdentity;
         });
         return services;
