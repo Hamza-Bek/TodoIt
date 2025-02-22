@@ -13,10 +13,12 @@ namespace Infrastructure.Services;
 public class TokensService : ITokensService
 {
     private readonly JwtSettings _jwtSettings;
+    private readonly RefreshTokenSettings _refreshTokenSettings;
 
-    public TokensService(JwtSettings jwtSettings)
+    public TokensService(JwtSettings jwtSettings, RefreshTokenSettings refreshTokenSettings)
     {
         _jwtSettings = jwtSettings;
+        _refreshTokenSettings = refreshTokenSettings;
     }
 
     public string GenerateJwtToken(ApplicationUser user)
@@ -51,7 +53,7 @@ public class TokensService : ITokensService
 
     public string GenerateRefreshToken()
     {
-        var randomNumber = new byte[64];
+        var randomNumber = new byte[_refreshTokenSettings.RefreshTokenLength];
         using var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
         rng.GetBytes(randomNumber);
         return Convert.ToBase64String(randomNumber);

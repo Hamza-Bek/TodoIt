@@ -11,13 +11,11 @@ namespace Infrastructure.Repositories;
 public class RefreshTokensRepository : IRefreshTokensRepository
 {
     private readonly ApplicationDbContext _context;
-    private readonly UserIdentity _userIdentity;
     private readonly ILogger<RefreshTokensRepository> _logger;
 
-    public RefreshTokensRepository(ApplicationDbContext context, UserIdentity userIdentity, ILogger<RefreshTokensRepository> logger)
+    public RefreshTokensRepository(ApplicationDbContext context, ILogger<RefreshTokensRepository> logger)
     {
         _context = context;
-        _userIdentity = userIdentity;
         _logger = logger;
     }
 
@@ -49,18 +47,25 @@ public class RefreshTokensRepository : IRefreshTokensRepository
         return token;
     }
 
-    public async Task<RefreshToken?> GetRefreshTokenByTokenAsync(string token)
+    public async Task<RefreshToken?> GetByTokenAsync(string token)
     {
         return await _context.RefreshTokens
-            .FirstOrDefaultAsync(t => t.Token == token);
+            .FirstOrDefaultAsync(r => r.Token == token);
     }
 
-    public async Task<IEnumerable<RefreshToken>> GetUserRefreshTokensAsync(Guid userId, CancellationToken cancellationToken = default)
+    public async Task CreateAsync(RefreshToken refreshToken)
     {
-        var tokens = await _context.RefreshTokens
-            .Where(t => t.UserId == userId)
-            .ToListAsync(cancellationToken);
+        _context.RefreshTokens.Add(refreshToken);
+        await _context.SaveChangesAsync();
+    }
 
-        return tokens;
+    public async Task RevokeAsync(RefreshToken token, string? reason = null, string? replacedByToken = null)
+    {
+        token.RevokedAt = DateTime.UtcNow;
+        token.RevokedReason = reason;
+        token.ReplacedByToken = replacedByToken;
+
+        _context.RefreshTokens.Update(token);
+        await _context.SaveChangesAsync();
     }
 }
