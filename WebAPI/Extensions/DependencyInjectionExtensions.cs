@@ -71,6 +71,8 @@ public static class DependencyInjectionExtensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<ITodoRepository, TodoRepository>();
+        services.AddScoped<INoteRepository, NoteRepository>();
+        services.AddScoped<IFolderRepository, FolderRepository>();
         services.AddScoped<IRefreshTokensRepository, RefreshTokensRepository>();
         services.AddScoped<ITokensService, TokensService>();
         services.AddScoped<IAuthRepository, AuthRepository>();
