@@ -24,72 +24,66 @@ public class FoldersController : ControllerBase
     public async Task<IActionResult> GetAllFolders()
     {
         var folders = await _folderRepository.GetFoldersAsync();
-        
-        return Ok(new ApiResponse<IEnumerable<Folder>>()
-        {
-            Message = "Folders retrieved successfully",
-            Succeeded = true,
-            Data = folders
-        });
+
+        return Ok(new ApiResponse<IEnumerable<Folder>>(
+            "Folders retrieved successfully",
+            true,
+            folders
+        ));
     }
 
     [HttpGet("get/{id}")]
     public async Task<IActionResult> GetNotesByFolder(Guid folderId)
     {
         var notes = await _folderRepository.GetNotesByFolderAsync(folderId);
-        
-        return Ok(new ApiResponse<IEnumerable<Note>>()
-        {
-            Message = "Notes retrieved successfully",
-            Succeeded = true,
-            Data = notes
-        });
+
+        return Ok(new ApiResponse<IEnumerable<Note>>(
+            "Notes retrieved successfully",
+            true,
+            notes
+        ));
     }
-    
+
     [HttpPost("add")]
     public async Task<IActionResult> AddFolder(FolderDto model)
     {
         var validationResult = await _folderValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
         {
-            return BadRequest(new ApiErrorResponse
-            {
-                ErrorMessage = validationResult.Errors.First().ErrorMessage
-            });
+            return BadRequest(new ApiErrorResponse(
+                validationResult.Errors.First().ErrorMessage
+            ));
         }
-        
+
         var folder = await _folderRepository.CreateFolderAsync(model.ToModel());
-        
-        return Ok(new ApiResponse<FolderDto>()
-        {
-            Message = "Folder created successfully",
-            Succeeded = true,
-            Data = folder.ToDto()
-        });
+
+        return Ok(new ApiResponse<FolderDto>(
+            "Folder created successfully",
+            true,
+            folder.ToDto()
+        ));
     }
-    
+
     [HttpPut("update/{id}")]
     public async Task<IActionResult> UpdateFolder(Guid folderId, FolderDto model)
     {
         var validationResult = await _folderValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
         {
-            return BadRequest(new ApiErrorResponse
-            {
-                ErrorMessage = validationResult.Errors.First().ErrorMessage
-            });
+            return BadRequest(new ApiErrorResponse(
+                validationResult.Errors.First().ErrorMessage
+            ));
         }
-        
+
         var folder = await _folderRepository.UpdateFolderAsync(folderId, model.ToModel());
-        
-        return Ok(new ApiResponse<FolderDto>()
-        {
-            Message = "Folder updated successfully",
-            Succeeded = true,
-            Data = folder.ToDto()
-        });
+
+        return Ok(new ApiResponse<FolderDto>(
+            "Folder updated successfully",
+            true,
+            folder.ToDto()
+        ));
     }
-    
+
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteFolder(Guid folderId)
     {
@@ -97,16 +91,14 @@ public class FoldersController : ControllerBase
 
         if (!result)
         {
-            return NotFound(new ApiErrorResponse
-            {
-                ErrorMessage = "Folder not found"
-            });
+            return NotFound(new ApiErrorResponse(
+                "Folder not found"
+            ));
         }
-        
-        return Ok(new ApiResponse
-        {
-            Message = "Folder deleted successfully",
-            Succeeded = true 
-        });
+
+        return Ok(new ApiResponse(
+            "Folder deleted successfully",
+            true
+        ));
     }
 }

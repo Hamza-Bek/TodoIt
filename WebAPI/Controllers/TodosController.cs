@@ -59,12 +59,11 @@ public class TodosController : ControllerBase
         var validationResult = await _todoValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
         {
-            return BadRequest(new ApiErrorResponse
-            {
-                ErrorMessage = validationResult.Errors.First().ErrorMessage
-            });
+            return BadRequest(new ApiErrorResponse(
+                validationResult.Errors.First().ErrorMessage
+            ));
         }
-        
+
         var todo = await _todoRepository.AddTodoAsync(model.ToModel());
 
         return Ok(new ApiResponse<TodoDto>(
@@ -80,12 +79,11 @@ public class TodosController : ControllerBase
         var validationResult = await _todoValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
         {
-            return BadRequest(new ApiErrorResponse
-            {
-                ErrorMessage = validationResult.Errors.First().ErrorMessage
-            });
+            return BadRequest(new ApiErrorResponse(
+                validationResult.Errors.First().ErrorMessage
+            ));
         }
-        
+
         var todo = await _todoRepository.UpdateTodoAsync(id, model.ToModel());
 
         if (todo == null)
