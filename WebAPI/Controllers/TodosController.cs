@@ -23,12 +23,11 @@ public class TodosController : ControllerBase
     {
         var respone = await _todoRepository.GetTodosAsync(filterCriteria, cancellationToken);
 
-        return Ok(new ApiResponse<IEnumerable<Todo>>()
-        {
-            Message = "Todos retrieved successfully",
-            Succeeded = true,
-            Data = respone
-        });
+        return Ok(new ApiResponse<IEnumerable<Todo>>(
+            "Todos retrieved successfully",
+            true,
+            respone
+        ));
     }
 
     [HttpGet("get/{id}")]
@@ -38,18 +37,16 @@ public class TodosController : ControllerBase
 
         if (todo == null)
         {
-            return NotFound(new ApiErrorResponse
-            {
-                ErrorMessage = "Todo not found"
-            });
+            return NotFound(new ApiErrorResponse(
+                "Todo not found"
+            ));
         }
 
-        return Ok(new ApiResponse<Todo>
-        {
-            Message = "Todo retrieved successfully",
-            Succeeded = true,
-            Data = todo
-        });
+        return Ok(new ApiResponse<Todo>(
+            "Todo retrieved successfully",
+            true,
+            todo
+        ));
         ;
     }
 
@@ -58,12 +55,11 @@ public class TodosController : ControllerBase
     {
         var todo = await _todoRepository.AddTodoAsync(model.ToModel());
 
-        return Ok(new ApiResponse<TodoDto>
-        {
-            Message = "Todo added successfully",
-            Succeeded = true,
-            Data = todo.ToDto()
-        });
+        return Ok(new ApiResponse<TodoDto>(
+            "Todo added successfully",
+            true,
+            todo.ToDto()
+        ));
     }
 
     [HttpPut("update/{id}")]
@@ -71,12 +67,17 @@ public class TodosController : ControllerBase
     {
         var todo = await _todoRepository.UpdateTodoAsync(id, model.ToModel());
 
-        return Ok(new ApiResponse<TodoDto>
-        {
-            Message = "Todo updated successfully",
-            Succeeded = true,
-            Data = todo.ToDto()
-        });
+        if (todo == null)
+            return NotFound(new ApiErrorResponse(
+                "Todo not found"
+            ));
+
+
+        return Ok(new ApiResponse<TodoDto>(
+            "Todo updated successfully",
+            true,
+            todo.ToDto()
+        ));
     }
 
     [HttpDelete("delete/{id}")]
@@ -86,17 +87,15 @@ public class TodosController : ControllerBase
 
         if (!response)
         {
-            return NotFound(new ApiErrorResponse
-            {
-                ErrorMessage = "Todo not found"
-            });
+            return NotFound(new ApiErrorResponse(
+                "Todo not found"
+            ));
         }
 
-        return Ok(new ApiResponse
-        {
-            Message = "Todo deleted successfully",
-            Succeeded = true
-        });
+        return Ok(new ApiResponse(
+            "Todo deleted successfully",
+            true
+        ));
     }
 
     [HttpPost("reschedule")]
@@ -104,10 +103,9 @@ public class TodosController : ControllerBase
     {
         await _todoRepository.RescheduleTodosAsync(request.Todos, request.NewDate);
 
-        return Ok(new ApiResponse
-        {
-            Message = "Todos rescheduled successfully",
-            Succeeded = true
-        });
+        return Ok(new ApiResponse(
+            "Todos rescheduled successfully",
+            true
+        ));
     }
 }
