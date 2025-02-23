@@ -1,14 +1,20 @@
 using System.Security.Claims;
+using System.Text;
 using Application.Dtos.Todo;
 using Application.Interfaces;
 using Application.Options;
+using DefaultNamespace;
 using Domain.Models;
 using Infrastructure.Data;
 using Infrastructure.Options;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using LockoutOptions = Infrastructure.Options.LockoutOptions;
 using PasswordOptions = Infrastructure.Options.PasswordOptions;
 
@@ -60,6 +66,27 @@ public static class DependencyInjectionExtensions
         configuration.GetSection("RefreshToken").Bind(refreshTokenSettings);
         services.AddScoped(_ => refreshTokenSettings);
 
+        var key = Encoding.UTF8.GetBytes(jwtSettings.Secret ?? throw new InvalidOperationException("JWT Secret is missing"));
+        
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                };
+            });
+        
         return services;
     }
 
@@ -76,22 +103,25 @@ public static class DependencyInjectionExtensions
         services.AddScoped<IRefreshTokensRepository, RefreshTokensRepository>();
         services.AddScoped<ITokensService, TokensService>();
         services.AddScoped<IAuthRepository, AuthRepository>();
-
+        
+        services.AddValidatorsFromAssemblyContaining<TodoDtoValidator>();
+         
         services.AddScoped<UserIdentity>(sp =>
         {
             var userIdentity = new UserIdentity();
             var httpContextAccessor = sp.GetRequiredService<IHttpContextAccessor>();
             var httpContext = httpContextAccessor.HttpContext;
-
+        
             if (httpContext?.User?.Identity?.IsAuthenticated == true)
             {
                 var userId = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 if (Guid.TryParse(userId, out var id))
                     userIdentity.Id = id;
-
+        
             }
             return userIdentity;
         });
+        
         return services;
     }
 }
