@@ -46,7 +46,7 @@ public class TodoRepository : ITodoRepository
         return await query.ToListAsync(cancellationToken);
     }
 
-    public async Task<Todo?> GetTodoByIdAsync(Guid todoId)
+    public async Task<Todo> GetTodoByIdAsync(Guid todoId)
     {
         var todo = await _context.Todos
             .FirstOrDefaultAsync(i => i.Id == todoId && i.OwnerId == _userIdentity.Id);
@@ -56,6 +56,16 @@ public class TodoRepository : ITodoRepository
 
     public async Task<Todo> AddTodoAsync(Todo todo)
     {
+        
+        var userId = _userIdentity.Id;
+        
+        if (userId == Guid.Empty)
+        {
+            throw new UnauthorizedAccessException($"User is not authenticated. {userId}");
+        }
+        
+        var endOfDay = DateTime.UtcNow.Date.AddDays(1).AddTicks(-1);
+        
         var newTodo = new Todo
         {
             Id = Guid.NewGuid(),
@@ -66,8 +76,8 @@ public class TodoRepository : ITodoRepository
             Priority = todo.Priority,
             Pinned = todo.Pinned,
             Overdue = todo.Overdue,
-            OwnerId = _userIdentity.Id,
-            DueDate = todo.DueDate
+            OwnerId = userId,
+            DueDate = endOfDay
         };
 
         _context.Todos.Add(newTodo);
