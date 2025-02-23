@@ -4,12 +4,14 @@ using Application.Mappers;
 using Application.Responses;
 using Domain.Models;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
+
+[Route("api/[controller]")]
 [ApiController]
-[Route("[controller]")]
 public class TodosController : ControllerBase
 {
     private readonly ITodoRepository _todoRepository;
@@ -21,20 +23,20 @@ public class TodosController : ControllerBase
         _todoValidator = todoValidator;
     }
 
-    [HttpPost("get/all")]
-    public async Task<IActionResult> GetTodos([FromBody] TodoFilterCriteria filterCriteria, CancellationToken cancellationToken)
+    [HttpGet("get/all")]
+    public async Task<IActionResult> GetTodos([FromQuery] TodoFilterCriteria filterCriteria, CancellationToken cancellationToken)
     {
-        var respone = await _todoRepository.GetTodosAsync(filterCriteria, cancellationToken);
+        var response = await _todoRepository.GetTodosAsync(filterCriteria, cancellationToken);
 
         return Ok(new ApiResponse<IEnumerable<Todo>>(
             "Todos retrieved successfully",
             true,
-            respone
+            response
         ));
     }
 
-    [HttpGet("get/{id}")]
-    public async Task<IActionResult> GetTodoById(Guid todoId)
+    [HttpGet("get")]
+    public async Task<IActionResult> GetTodoById([FromQuery]Guid todoId)
     {
         var todo = await _todoRepository.GetTodoByIdAsync(todoId);
 
@@ -50,7 +52,6 @@ public class TodosController : ControllerBase
             true,
             todo
         ));
-        ;
     }
 
     [HttpPost("add")]
@@ -73,8 +74,8 @@ public class TodosController : ControllerBase
         ));
     }
 
-    [HttpPut("update/{id}")]
-    public async Task<IActionResult> UpdateTodo(Guid id, TodoDto model)
+    [HttpPut("update")]
+    public async Task<IActionResult> UpdateTodo([FromQuery]Guid id,[FromBody]TodoDto model)
     {
         var validationResult = await _todoValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
@@ -99,7 +100,7 @@ public class TodosController : ControllerBase
         ));
     }
 
-    [HttpDelete("delete/{id}")]
+    [HttpDelete("delete")]
     public async Task<IActionResult> DeleteTodo(Guid id)
     {
         var response = await _todoRepository.DeleteTodoAsync(id);
