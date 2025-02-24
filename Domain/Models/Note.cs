@@ -13,7 +13,7 @@ namespace Domain.Models
         public bool Pinned { get; set; }
         public Guid OwnerId { get; set; }
         public ApplicationUser? Owner { get; set; }
-        public Guid FolderId { get; set; }
+        public Guid? FolderId { get; set; }
         public Folder? Folder { get; set; }
     }
 }

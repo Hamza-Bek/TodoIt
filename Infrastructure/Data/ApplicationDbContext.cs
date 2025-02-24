@@ -24,6 +24,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
 
         // apply model configurations here
         builder.ApplyConfiguration(new RefreshTokenConfiguration());
+        
+        builder.Entity<Note>()
+            .HasOne(n => n.Folder)
+            .WithMany(f => f.Notes)
+            .HasForeignKey(n => n.FolderId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }
 

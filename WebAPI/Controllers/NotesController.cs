@@ -22,7 +22,7 @@ public class NotesController : ControllerBase
   }
 
   [HttpGet("get/all")]
-  public async Task<IActionResult> GetAllNotes(NoteFilterCriteria filterCriteria)
+  public async Task<IActionResult> GetAllNotes([FromQuery]NoteFilterCriteria filterCriteria)
   {
     var response = await _noteRepository.GetNotesAsync(filterCriteria);
 
@@ -33,8 +33,8 @@ public class NotesController : ControllerBase
     ));
   }
 
-  [HttpGet("get/{id}")]
-  public async Task<IActionResult> GetNoteById(Guid id)
+  [HttpGet("get")]
+  public async Task<IActionResult> GetNoteById([FromQuery]Guid id)
   {
     var response = await _noteRepository.GetNoteByIdAsync(id);
 
@@ -65,8 +65,8 @@ public class NotesController : ControllerBase
     ));
   }
 
-  [HttpPut("update/{id}")]
-  public async Task<IActionResult> UpdateNote(Guid id, NoteDto model)
+  [HttpPut("update")]
+  public async Task<IActionResult> UpdateNote([FromQuery]Guid id, NoteDto model)
   {
     var validationResult = await _noteValidator.ValidateAsync(model);
     if (!validationResult.IsValid)
