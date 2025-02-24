@@ -10,14 +10,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="Implement methods for the Note management">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/TodoRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/TodoRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/TodosController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/TodosController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Extensions/DependencyInjectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Extensions/DependencyInjectionExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Migrations/20250222183401_InitialCreate.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Migrations/20250222183401_InitialCreate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Dtos/Note/NoteDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Dtos/Note/NoteDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Models/Note.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Models/Note.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/NoteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/NoteRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/NotesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/NotesController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +46,17 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7e7903867c044f1ab43846b2f1406035c910/5e/722d917c/IConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a6b7f037ba7b44df80b8d3aa7e58eeb2e8e938/4e/0aeabc4a/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dffdaf205cf54e098aa7d66ba76b38621de920/19/cbf0b8a4/ControllerFactoryProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/Application/Dtos/Note/NoteDto.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/Domain/Models/Note.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/Infrastructure/Data/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/FolderRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/Infrastructure/Repositories/NoteRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/NotesController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Extensions/DependencyInjectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Extensions/DependencyInjectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -64,7 +70,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.WebAPI: http.executor": "Run",
-    "git-widget-placeholder": "Todo-endpoints-modification",
+    "git-widget-placeholder": "feature/modify-note-endpoints",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
