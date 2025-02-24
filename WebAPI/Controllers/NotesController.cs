@@ -33,7 +33,7 @@ public class NotesController : ControllerBase
     ));
   }
 
-  [HttpGet("get/{id}")]
+  [HttpGet("get")]
   public async Task<IActionResult> GetNoteById(Guid id)
   {
     var response = await _noteRepository.GetNoteByIdAsync(id);
@@ -65,7 +65,7 @@ public class NotesController : ControllerBase
     ));
   }
 
-  [HttpPut("update/{id}")]
+  [HttpPut("update")]
   public async Task<IActionResult> UpdateNote(Guid id, NoteDto model)
   {
     var validationResult = await _noteValidator.ValidateAsync(model);
@@ -85,7 +85,7 @@ public class NotesController : ControllerBase
     ));
   }
 
-  [HttpDelete("delete/{id}")]
+  [HttpDelete("delete")]
   public async Task<IActionResult> DeleteNote(Guid id)
   {
     var result = await _noteRepository.DeleteNoteAsync(id);
