@@ -28,12 +28,12 @@ public class NoteRepository : INoteRepository
         return await query.ToListAsync();
     }
 
-    public async Task<Note> GetNoteByIdAsync(Guid noteId)
+    public async Task<Note> GetNoteByIdAsync(Guid id)
     {
-        var todo = await _context.Notes
-            .FirstOrDefaultAsync(i => i.Id == noteId && i.OwnerId == _userIdentity.Id);
+        var note = await _context.Notes
+            .FirstOrDefaultAsync(i => i.Id == id && i.OwnerId == _userIdentity.Id);
 
-        return todo!;
+        return note!;
     }
 
     public async Task<Note> AddNoteAsync(Note note)
@@ -46,7 +46,7 @@ public class NoteRepository : INoteRepository
             Pinned = false,
             CreatedAt = DateTime.UtcNow,
             OwnerId = _userIdentity.Id,
-            FolderId = note.FolderId
+            FolderId = note.FolderId ?? null
         };
         
         _context.Notes.Add(newNote);
