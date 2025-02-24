@@ -85,7 +85,7 @@ public class NotesController : ControllerBase
     ));
   }
 
-  [HttpDelete("delete/{id}")]
+  [HttpDelete("delete")]
   public async Task<IActionResult> DeleteNote(Guid id)
   {
     var result = await _noteRepository.DeleteNoteAsync(id);
