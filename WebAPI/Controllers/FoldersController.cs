@@ -32,10 +32,10 @@ public class FoldersController : ControllerBase
         ));
     }
 
-    [HttpGet("get/{id}")]
-    public async Task<IActionResult> GetNotesByFolder(Guid folderId)
+    [HttpGet("get/notes")]
+    public async Task<IActionResult> GetNotesByFolder(Guid id)
     {
-        var notes = await _folderRepository.GetNotesByFolderAsync(folderId);
+        var notes = await _folderRepository.GetNotesByFolderAsync(id);
 
         return Ok(new ApiResponse<IEnumerable<Note>>(
             "Notes retrieved successfully",
@@ -64,8 +64,8 @@ public class FoldersController : ControllerBase
         ));
     }
 
-    [HttpPut("update/{id}")]
-    public async Task<IActionResult> UpdateFolder(Guid folderId, FolderDto model)
+    [HttpPut("update")]
+    public async Task<IActionResult> UpdateFolder([FromQuery]Guid id, FolderDto model)
     {
         var validationResult = await _folderValidator.ValidateAsync(model);
         if (!validationResult.IsValid)
@@ -75,7 +75,7 @@ public class FoldersController : ControllerBase
             ));
         }
 
-        var folder = await _folderRepository.UpdateFolderAsync(folderId, model.ToModel());
+        var folder = await _folderRepository.UpdateFolderAsync(id, model.ToModel());
 
         return Ok(new ApiResponse<FolderDto>(
             "Folder updated successfully",
@@ -84,10 +84,10 @@ public class FoldersController : ControllerBase
         ));
     }
 
-    [HttpDelete("delete/{id}")]
-    public async Task<IActionResult> DeleteFolder(Guid folderId)
+    [HttpDelete("delete")]
+    public async Task<IActionResult> DeleteFolder([FromQuery]Guid id)
     {
-        var result = await _folderRepository.DeleteFolderAsync(folderId);
+        var result = await _folderRepository.DeleteFolderAsync(id);
 
         if (!result)
         {
