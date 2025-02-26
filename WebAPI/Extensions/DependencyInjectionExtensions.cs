@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using System.Text;
+using System.Threading.RateLimiting;
 using Application.Dtos.Todo;
 using Application.Interfaces;
 using Application.Options;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using LockoutOptions = Infrastructure.Options.LockoutOptions;
@@ -121,6 +123,18 @@ public static class DependencyInjectionExtensions
             }
             return userIdentity;
         });
+
+        services.AddRateLimiter(options =>
+        {
+            options.AddFixedWindowLimiter("fixed", limiterOptions =>
+            {
+                limiterOptions.Window = TimeSpan.FromSeconds(10); // THIS DEFINES THE TIME WINDOW : EVERY 10 SECONDS THE LIMIT WILL RESET , ALLOWING FOR A NEW REQUESTS
+                limiterOptions.PermitLimit = 10; // THIS DEFINES THE NUMBER OF REQUESTS ALLOWED IN THE TIME WINDOW
+                limiterOptions.QueueProcessingOrder = QueueProcessingOrder.OldestFirst; // THIS DEFINES THE ORDER IN WHICH REQUESTS WILL BE PROCESSED
+                limiterOptions.QueueLimit = 0; // THIS DEFINES HOW MANY EXTRA REQUESTS CAN BE QUEUED AFTER THE LIMIT HAS BEEN REACHED, THIS ALSO PREVENT ERROR 429
+            });
+        });
+        
         
         return services;
     }
