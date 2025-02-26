@@ -5,9 +5,11 @@ using Application.Responses;
 using Domain.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebAPI.Controllers;
 
+[EnableRateLimiting("fixed")] 
 [ApiController]
 [Route("api/[controller]")]
 public class NotesController : ControllerBase
