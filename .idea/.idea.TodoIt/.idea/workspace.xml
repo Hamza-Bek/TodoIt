@@ -8,10 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="Implement methods for the Note management">
+    <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="Implement rate limiting with Fixed Window strategy">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/FoldersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/FoldersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/NotesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/NotesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoIt.sln" beforeDir="false" afterPath="$PROJECT_DIR$/TodoIt.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,15 +45,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7e7903867c044f1ab43846b2f1406035c910/5e/722d917c/IConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a6b7f037ba7b44df80b8d3aa7e58eeb2e8e938/4e/0aeabc4a/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dffdaf205cf54e098aa7d66ba76b38621de920/19/cbf0b8a4/ControllerFactoryProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Application/Dtos/Note/NoteDto.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Domain/Models/Note.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Infrastructure/Data/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/FolderRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Infrastructure/Repositories/NoteRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/NotesController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Extensions/DependencyInjectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Extensions/DependencyInjectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RepositoryUnitTests/TodoRepositoryTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -67,7 +60,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.WebAPI: http.executor": "Run",
-    "git-widget-placeholder": "feature/modify-folder-endpoints",
+    "git-widget-placeholder": "test/note-unit-tests",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,7 +70,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Launch Settings Profile.WebAPI: http">
     <configuration name="WebAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebAPI/WebAPI.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
@@ -95,6 +88,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
+        <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
+        <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
+        <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
         <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
       </list>
     </recent_temporary>
@@ -118,6 +115,7 @@
       <workItem from="1740265631432" duration="6711000" />
       <workItem from="1740272509636" duration="1996000" />
       <workItem from="1740334608360" duration="6953000" />
+      <workItem from="1740542430458" duration="609000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

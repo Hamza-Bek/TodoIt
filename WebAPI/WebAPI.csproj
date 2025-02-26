@@ -18,6 +18,10 @@
     </PackageReference>
   </ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="RepositoryUnitTests.csproj" />
+	</ItemGroup>	
+	
   <ItemGroup>
     <ProjectReference Include="../Infrastructure/Infrastructure.csproj" />
   </ItemGroup>
