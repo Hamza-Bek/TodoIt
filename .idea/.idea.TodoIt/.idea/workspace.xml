@@ -9,9 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="Implement rate limiting with Fixed Window strategy">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TodoIt.sln" beforeDir="false" afterPath="$PROJECT_DIR$/TodoIt.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Controllers/TodosController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Controllers/TodosController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/WebAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +48,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dffdaf205cf54e098aa7d66ba76b38621de920/19/cbf0b8a4/ControllerFactoryProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/FolderRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RepositoryUnitTests/TodoRepositoryTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -60,7 +63,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.WebAPI: http.executor": "Run",
-    "git-widget-placeholder": "test/note-unit-tests",
+    "git-widget-placeholder": "refactor/rate-limiter",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

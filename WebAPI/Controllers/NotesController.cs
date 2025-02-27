@@ -4,14 +4,16 @@ using Application.Mappers;
 using Application.Responses;
 using Domain.Models;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebAPI.Controllers;
 
-[EnableRateLimiting("fixed")] 
+[EnableRateLimiting("authenticated")] 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class NotesController : ControllerBase
 {
   private readonly INoteRepository _noteRepository;

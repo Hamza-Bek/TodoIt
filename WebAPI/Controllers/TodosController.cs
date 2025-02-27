@@ -10,9 +10,11 @@ using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebAPI.Controllers;
 
-[EnableRateLimiting("fixed")] 
+
+[EnableRateLimiting("authenticated")]
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class TodosController : ControllerBase
 {
     private readonly ITodoRepository _todoRepository;
@@ -35,7 +37,7 @@ public class TodosController : ControllerBase
             response
         ));
     }
-    
+
     [HttpGet("get")]
     public async Task<IActionResult> GetTodoById([FromQuery]Guid todoId)
     {
