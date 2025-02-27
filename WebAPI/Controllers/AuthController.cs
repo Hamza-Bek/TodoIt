@@ -9,7 +9,7 @@ using WebAPI.Extensions;
 
 namespace WebAPI.Controllers;
 
-[EnableRateLimiting("fixed")] 
+[EnableRateLimiting("anonymous")] 
 [Route("api/[controller]")]
 [ApiController]
 public class AuthController : ControllerBase
