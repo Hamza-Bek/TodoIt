@@ -4,11 +4,16 @@ using Application.Responses;
 using Application.Mappers;
 using Domain.Models;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebAPI.Controllers;
+
+[EnableRateLimiting("authenticated")] 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class FoldersController : ControllerBase
 {
     private readonly IFolderRepository _folderRepository;

@@ -6,12 +6,15 @@ using Domain.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace WebAPI.Controllers;
 
 
+[EnableRateLimiting("authenticated")]
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class TodosController : ControllerBase
 {
     private readonly ITodoRepository _todoRepository;
@@ -22,7 +25,7 @@ public class TodosController : ControllerBase
         _todoRepository = todoRepository;
         _todoValidator = todoValidator;
     }
-
+    
     [HttpGet("get/all")]
     public async Task<IActionResult> GetTodos([FromQuery] TodoFilterCriteria filterCriteria, CancellationToken cancellationToken)
     {

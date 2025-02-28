@@ -4,10 +4,12 @@ using Application.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using WebAPI.Extensions;
 
 namespace WebAPI.Controllers;
 
+[EnableRateLimiting("anonymous")] 
 [Route("api/[controller]")]
 [ApiController]
 public class AuthController : ControllerBase
