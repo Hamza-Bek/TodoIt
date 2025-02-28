@@ -9,8 +9,6 @@ builder.Services.AddApplicationServices();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-builder.Services.AddCustomRateLimiter();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,8 +20,6 @@ if (app.Environment.IsDevelopment())
 app.UseRateLimiter();
 
 app.UseHttpsRedirection();
-
-app.UseRateLimiter();
 
 app.UseAuthentication();
 

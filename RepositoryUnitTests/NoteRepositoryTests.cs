@@ -48,14 +48,12 @@ public class NoteRepositoryTests
     }
     
     [Fact]
-    public async Task GetNoteByIdAsync_ShouldReturnNull_WhenNoteDoesNotExist()
+    public async Task GetNoteByIdAsync_ShouldThrowNotFoundException_WhenNoteDoesNotExist()
     {
         _mockNoteRepository.Setup(x => x.GetNoteByIdAsync(_testNoteId))
-            .ReturnsAsync(() => null);
-        
-        var result = await _mockNoteRepository.Object.GetNoteByIdAsync(_testNoteId);
-        
-        Assert.Null(result);
+            .ThrowsAsync(new ("Note not found"));
+
+        Assert.ThrowsAsync<Exception>(() => _mockNoteRepository.Object.GetNoteByIdAsync(_testNoteId));
     }
     
     [Fact]

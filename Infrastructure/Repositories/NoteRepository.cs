@@ -31,10 +31,11 @@ public class NoteRepository : INoteRepository
     public async Task<Note> GetNoteByIdAsync(Guid id)
     {
         var note = await _context.Notes
-            .FirstOrDefaultAsync(i => i.Id == id && i.OwnerId == _userIdentity.Id);
+            .FirstOrDefaultAsync(i => i.Id == id && i.OwnerId == _userIdentity.Id);        
 
-        return note!;
+        return note;
     }
+
 
     public async Task<Note> AddNoteAsync(Note note)
     {
