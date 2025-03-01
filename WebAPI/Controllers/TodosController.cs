@@ -39,9 +39,9 @@ public class TodosController : ControllerBase
     }
 
     [HttpGet("get")]
-    public async Task<IActionResult> GetTodoById([FromQuery]Guid todoId)
+    public async Task<IActionResult> GetTodoById([FromQuery]Guid id)
     {
-        var todo = await _todoRepository.GetTodoByIdAsync(todoId);
+        var todo = await _todoRepository.GetTodoByIdAsync(id);
 
         if (todo == null)
         {
