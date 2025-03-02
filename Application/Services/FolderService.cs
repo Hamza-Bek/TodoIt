@@ -1,31 +1,85 @@
+using System.Net.Http.Json;
 using Application.Dtos.Folder;
+using Application.Responses;
 
 namespace Application.Services;
 
 public class FolderService : IFolderService
 {
-    public Task<IEnumerable<FolderDto>> GetFoldersAsync()
+    private readonly HttpClient _httpClient;
+
+    public FolderService(HttpClient httpClient)
     {
-        throw new NotImplementedException();
+        _httpClient = httpClient;
     }
 
-    public Task<FolderDto> GetFolderByIdAsync(Guid id)
+    public async Task<IEnumerable<FolderDto>> GetFoldersAsync()
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.GetAsync("api/Folders/get/all");
+        
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorResponse = await response.Content.ReadFromJsonAsync<ApiErrorResponse>();
+            throw new HttpRequestException(errorResponse?.ErrorMessage ?? "An unknown error occurred.");
+        }
+        
+        var apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<IEnumerable<FolderDto>>>();
+        
+        return apiResponse!.Data;
     }
 
-    public Task<FolderDto> AddFolderAsync(FolderDto folder)
+    public async Task<FolderDto> GetFolderByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.GetAsync("api/Folders/get?id=" + id);
+        
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorResponse = await response.Content.ReadFromJsonAsync<ApiErrorResponse>();
+            throw new HttpRequestException(errorResponse?.ErrorMessage ?? "An unknown error occurred.");
+        }
+        
+        var apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<FolderDto>>();
+        
+        return apiResponse!.Data;
     }
 
-    public Task<FolderDto> UpdateFolderAsync(Guid id, FolderDto folder)
+    public async Task<FolderDto> AddFolderAsync(FolderDto folder)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsJsonAsync("api/Folders/add", folder);
+        
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorResponse = await response.Content.ReadFromJsonAsync<ApiErrorResponse>();
+            throw new HttpRequestException(errorResponse?.ErrorMessage ?? "An unknown error occurred.");
+        }
+        
+        var apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<FolderDto>>();
+        
+        return apiResponse!.Data;
     }
 
-    public Task DeleteFolderAsync(Guid id)
+    public async Task<FolderDto> UpdateFolderAsync(Guid id, FolderDto folder)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PutAsJsonAsync("api/Folders/update?id=" + id, folder);
+        
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorResponse = await response.Content.ReadFromJsonAsync<ApiErrorResponse>();
+            throw new HttpRequestException(errorResponse?.ErrorMessage ?? "An unknown error occurred.");
+        }
+        
+        var apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<FolderDto>>();
+        return apiResponse!.Data;
+    }
+
+    public async Task DeleteFolderAsync(Guid id)
+    {
+        var response = await _httpClient.DeleteAsync("api/Folders/delete?id=" + id);
+        
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorResponse = await response.Content.ReadFromJsonAsync<ApiErrorResponse>();
+            throw new HttpRequestException(errorResponse?.ErrorMessage ?? "An unknown error occurred.");
+        }
     }
 }
