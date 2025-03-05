@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 using LockoutOptions = Infrastructure.Options.LockoutOptions;
 using PasswordOptions = Infrastructure.Options.PasswordOptions;
 
@@ -67,25 +68,26 @@ public static class DependencyInjectionExtensions
         var refreshTokenSettings = new RefreshTokenSettings();
         configuration.GetSection("RefreshToken").Bind(refreshTokenSettings);
         services.AddScoped(_ => refreshTokenSettings);
-
-        var key = Encoding.UTF8.GetBytes(jwtSettings.Secret ?? throw new InvalidOperationException("JWT Secret is missing"));
         
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+        var jwtSecret = configuration["Jwt:Secret"];
+
+        if (string.IsNullOrEmpty(jwtSecret))
+        {
+            throw new InvalidOperationException("JWT Secret key is missing!");
+        }
+
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.RequireHttpsMetadata = false;
-                options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                    ValidateIssuer = configuration.GetValue<bool>("Jwt:ValidateIssuer"),
+                    ValidateAudience = configuration.GetValue<bool>("Jwt:ValidateAudience"),
+                    ValidateLifetime = configuration.GetValue<bool>("Jwt:ValidateLifetime"),
+                    ValidateIssuerSigningKey = configuration.GetValue<bool>("Jwt:ValidateIssuerSigningKey"),
+                    ValidIssuer = configuration["Jwt:Issuer"],
+                    ValidAudience = configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret))
                 };
             });
         
@@ -124,6 +126,17 @@ public static class DependencyInjectionExtensions
         
             }
             return userIdentity;
+        });
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("WebUI", policy =>
+            {
+                policy.WithOrigins("https://localhost:7222")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithHeaders(HeaderNames.ContentType);
+            });
         });
         
         return services;
