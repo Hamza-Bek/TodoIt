@@ -1,4 +1,13 @@
 :root {
+    --primary-color: #FFC105FF;
+    --secondary-color: #171A1FFF;
+    --accent-color: #3b82f6;
+    --text-color: #333333;
+    --background-color: #F5F5F5;
+}
+
+html, body {
+:root {
     /* used for primary elements (buttons, links, etc.) */
     --primary-color: #FFB700;
     /* used for secondary elements (text, icons, etc.) */
