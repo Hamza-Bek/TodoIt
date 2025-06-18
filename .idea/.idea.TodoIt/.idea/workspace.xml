@@ -10,12 +10,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="Implement the folder service">
+    <list default="true" id="e263bb07-a9de-46f0-b96e-a9ab1505e321" name="Changes" comment="Add the Di Extension file">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2025_10_27_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2025_10_27_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2025_6_16_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_26_2025_6_16_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_27_2025_1_07_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_27_2025_1_07_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TodoIt/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Extensions/DependencyInjectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Extensions/DependencyInjectionExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebUI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebUI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebUI/WebUI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebUI/WebUI.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,24 +43,21 @@
     &quot;assignee&quot;: &quot;Hamza-Bek&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Hamza-Bek/TodoIt.git&quot;,
-    &quot;accountId&quot;: &quot;93d166b8-a2c8-4291-ac19-571d3757bc74&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Hamza-Bek/TodoIt.git",
+    "accountId": "d1263a63-f2b0-4826-ae3a-03a24b47040e"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7e7903867c044f1ab43846b2f1406035c910/5e/722d917c/IConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a6b7f037ba7b44df80b8d3aa7e58eeb2e8e938/4e/0aeabc4a/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dffdaf205cf54e098aa7d66ba76b38621de920/19/cbf0b8a4/ControllerFactoryProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/Application/Services/FolderService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/FolderRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/TodoRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/RepositoryUnitTests/TodoRepositoryTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Controllers/AuthController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Controllers/NotesController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/2025's projects/TodoIt/WebAPI/Controllers/TodosController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Controllers/TodosController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Extensions/DependencyInjectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebAPI/Extensions/RateLimiterExtension.cs" root0="FORCE_HIGHLIGHTING" />
@@ -73,21 +74,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.WebAPI: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.WebUI: http.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/client-config&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.WebAPI: http.executor": "Run",
+    ".NET Launch Settings Profile.WebUI: http.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/client-config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.WebAPI: http">
+}]]></component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.WebUI: http">
     <configuration name="WebAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebAPI/WebAPI.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
@@ -120,8 +123,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
         <item itemvalue=".NET Launch Settings Profile.WebUI: http" />
+        <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
         <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
         <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
         <item itemvalue=".NET Launch Settings Profile.WebAPI: http" />
@@ -151,6 +154,10 @@
       <workItem from="1741009732134" duration="6572000" />
       <workItem from="1741049373885" duration="661000" />
       <workItem from="1741116708744" duration="560000" />
+      <workItem from="1741132128694" duration="2822000" />
+      <workItem from="1741787842791" duration="59000" />
+      <workItem from="1743119641874" duration="1537000" />
+      <workItem from="1744023703059" duration="4759000" />
     </task>
     <task id="LOCAL-00002" summary="Build the WebUI project">
       <option name="closed" value="true" />
@@ -184,7 +191,31 @@
       <option name="project" value="LOCAL" />
       <updated>1740950679722</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Design the dock">
+      <option name="closed" value="true" />
+      <created>1741135696311</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741135696311</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add the Dock component and Di Extension">
+      <option name="closed" value="true" />
+      <created>1741135921518</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741135921518</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add the Di Extension file">
+      <option name="closed" value="true" />
+      <created>1741135940017</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741135940017</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +230,9 @@
     <MESSAGE value="Implement the NoteService" />
     <MESSAGE value="Define Folder service methods" />
     <MESSAGE value="Implement the folder service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement the folder service" />
+    <MESSAGE value="Design the dock" />
+    <MESSAGE value="Add the Dock component and Di Extension" />
+    <MESSAGE value="Add the Di Extension file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add the Di Extension file" />
   </component>
 </project>
