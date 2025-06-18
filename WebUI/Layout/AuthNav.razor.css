@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.auth-nav-center {
+    width: 100vw;
+    cursor: pointer;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    letter-spacing: 2px;
+}
