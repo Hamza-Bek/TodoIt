@@ -1,0 +1,17 @@
+﻿@page "/signup"
+
+<AuthForm TModel="RegisterRequest"
+          Title="Register"
+          ButtonText="Login"
+          Model="registerModel"
+          IsRegister="true"
+          OnSubmit="HandleLogin" />
+
+@code {
+    private RegisterRequest registerModel = new();
+
+    private void HandleLogin()
+    {
+        Console.WriteLine($"Login: {registerModel.Email}, {registerModel.Password}");
+    }
+}

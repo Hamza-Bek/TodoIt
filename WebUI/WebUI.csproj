@@ -15,8 +15,4 @@
       <ProjectReference Include="..\Application\Application.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="WorkSpace\" />
-    </ItemGroup>
-
 </Project>
