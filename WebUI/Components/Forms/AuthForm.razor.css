@@ -1,8 +1,8 @@
 ﻿* {
-  box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
-body, html {
+body, html {    
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -13,21 +13,21 @@ body, html {
     justify-content: center;
 }
 
-.bg-container {    
-    height: 90vh;    
+.bg-container {
+    min-height: 90vh;
+    height: auto;
     display: flex;
-    justify-content: center;
+    justify-content: center;    
     align-items: center;
 }
 
 .form-container {
   background: white;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.10);
   max-width: 400px;
-  width: 90vw;
-  margin: 2rem auto;
+  width: 90vw;  
   text-align: center;
 }
 
