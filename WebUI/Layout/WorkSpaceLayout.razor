@@ -1,11 +1,13 @@
-﻿@inherits LayoutComponentBase
+﻿@using WebUI.Components.Widgets
+@inherits LayoutComponentBase
 <div class="page">
 
 
     <main>
-        <WorkSpaceMenu />
+        <WorkSpaceNav />
         <article>
-            @Body
+            @Body            
         </article>
     </main>
+    <Dock />
 </div>

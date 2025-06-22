@@ -1,0 +1,16 @@
+﻿@page "/login"
+
+<AuthForm TModel="LoginRequest" 
+          Title="Login" 
+          ButtonText="Login" 
+          Model="loginModel"           
+          OnSubmit="HandleLogin" />
+
+@code {
+    private LoginRequest loginModel = new();
+
+    private void HandleLogin()
+    {
+        Console.WriteLine($"Login: {loginModel.Email}, {loginModel.Password}");
+    }
+}
