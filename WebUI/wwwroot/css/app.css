@@ -4,25 +4,6 @@
     --accent-color: #3b82f6;
     --text-color: #333333;
     --background-color: #F5F5F5;
-    /* used for primary elements (buttons, links, etc.) */
-    --primary-color: #FFB700;
-    /* used for secondary elements (text, icons, etc.) */
-    --secondary-color: #FFF7C5;
-    /* used for background elements (body, containers, etc.) */
-    --background-color: #FFF;
-    /* used for text elements (paragraphs, headings, etc.) */
-    --text-color: #333333;
-    /* used for error elements (validation, alerts, etc.) */
-    --error-color: #F36464;
-    /* used for success elements (validation, alerts, etc.) */
-    --success-color: #76E36C;
-    /* used for warning elements (validation, alerts, etc.) */
-    --warning-color: #FFD260;
-    /* used for info elements (validation, alerts, etc.) */
-    --info-color: #309BEE;
-    --low-priority-color: #E0F4FF;
-    --medium-priority-color: #FFF3DE;
-    --high-priority-color: #FFE0E0;
 }
 
 html,

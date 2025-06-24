@@ -1,2 +1,44 @@
-﻿body {
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;        
+    padding: 10px 20px;
+    position: relative;
+}
+
+.sidebar {
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;   
+}
+
+    .nav-icons a {
+        color: var(--text-color);
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .nav-icons {
+        gap: 15px;
+    }
 }
