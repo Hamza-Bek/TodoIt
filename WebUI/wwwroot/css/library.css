@@ -1,0 +1,149 @@
+﻿.my-btn {
+    font-family: inherit;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border 0.2s ease;
+}
+
+    /* Size variants */
+    .my-btn.xsmall {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .my-btn.small {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.65rem;
+    }
+
+    .my-btn.medium {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .my-btn.large {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.25rem;
+    }
+
+    /* Filled variant */
+    .my-btn.filled.default {
+        background-color: #e0e0e0;
+        color: var(--text-color);
+    }
+
+    .my-btn.filled.primary {
+        background-color: var(--primary);
+        color: white;
+    }
+
+    .my-btn.filled.secondary {
+        background-color: var(--secondary);
+        color: white;
+    }
+
+    .my-btn.filled.success {
+        background-color: var(--success);
+        color: white;
+    }
+
+    .my-btn.filled.warning {
+        background-color: var(--warning);
+        color: white;
+    }
+
+    .my-btn.filled.danger {
+        background-color: var(--error);
+        color: white;
+    }
+
+    /* Outlined variant */
+    .my-btn.outlined {
+        background-color: transparent;
+        border: 2px solid;
+    }
+
+        .my-btn.outlined.default {
+            color: var(--text-color);
+            border-color: #e0e0e0;
+        }
+
+        .my-btn.outlined.primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .my-btn.outlined.secondary {
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .my-btn.outlined.success {
+            color: var(--success);
+            border-color: var(--success);
+        }
+
+        .my-btn.outlined.warning {
+            color: var(--warning);
+            border-color: var(--warning);
+        }
+
+        .my-btn.outlined.danger {
+            color: var(--error);
+            border-color: var(--error);
+        }
+
+    /* Text variant */
+    .my-btn.text {
+        background-color: transparent;
+        border: none;
+    }
+
+        .my-btn.text.default {
+            color: var(--text-color);
+        }
+
+        .my-btn.text.primary {
+            color: var(--primary);
+        }
+
+        .my-btn.text.secondary {
+            color: var(--secondary);
+        }
+
+        .my-btn.text.success {
+            color: var(--success);
+        }
+
+        .my-btn.text.warning {
+            color: var(--warning);
+        }
+
+        .my-btn.text.danger {
+            color: var(--error);
+        }
+
+     /* Width */
+
+    .my-btn.short {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+
+    .my-btn.medium {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .my-btn.wide {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .my-btn.ultrawide {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
