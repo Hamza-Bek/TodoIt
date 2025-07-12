@@ -1,0 +1,8 @@
+﻿@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public Theme Theme { get; set; } = new();
+}
+
+<CascadingValue Value="Theme">
+    @ChildContent
+</CascadingValue>
