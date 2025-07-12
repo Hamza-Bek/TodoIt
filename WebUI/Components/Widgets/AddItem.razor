@@ -1,4 +1,5 @@
-﻿<div class="todo-form">
+﻿
+<div class="todo-form">
     <input type="text" placeholder="Enter the todo here" class="todo-input" />
     <input type="text" placeholder="Description" class="todo-input" />
 
@@ -14,12 +15,14 @@
             📅 Today
         </button>
         <div class="action-buttons">
-            <button class="cancel-btn">Cancel</button>
-            <button class="confirm-btn">Confirm</button>
-            <MudButton Variant="Variant.Filled" Color="Color.Primary">Primary</MudButton>
+            <TodoItButton Color="Color.Default" Variant="Variant.Outlined" Size="Size.XSmall" Width="Width.Wide">
+                Cancel
+            </TodoItButton>            
+            <TodoItButton Color="Color.Primary" Variant="Variant.Filled" Size="Size.Small" Width="Width.UltraWide">
+                Confirm
+             </TodoItButton>
         </div>
     </div>
-
  
 </div>
 

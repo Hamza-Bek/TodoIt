@@ -1,0 +1,18 @@
+﻿@using WebUI.Enums
+<button class="@GetCssClasses()" @onclick="OnClick">
+    @ChildContent
+</button>
+
+@code{
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+    [Parameter] public Color Color { get; set; } = Color.Primary;
+    [Parameter] public Size Size { get; set; } = Size.Medium;
+    [Parameter] public Variant Variant { get; set; } = Variant.Filled;
+    [Parameter] public Width Width { get; set; } = Width.Medium;
+
+    private string GetCssClasses()
+    {
+        return $"my-btn {Color.ToString().ToLower()} {Size.ToString().ToLower()} {Variant.ToString().ToLower()} {Width.ToString().ToLower()}";
+    }
+}
