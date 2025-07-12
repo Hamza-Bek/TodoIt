@@ -1,7 +1,12 @@
 ﻿@page "/home"
+@using WebUI.Components.Widgets
 
-<h3>Home</h3>
+<AddItem/>
 
 @code {
-
+    private void DoSomething(MouseEventArgs e)
+    {
+        // Handle the button click event
+        Console.WriteLine("Button clicked!");
+    }
 }

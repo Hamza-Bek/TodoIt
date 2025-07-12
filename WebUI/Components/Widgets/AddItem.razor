@@ -1,9 +1,32 @@
-<div class="form">
-    <div class="form-container">
-        
+﻿<div class="todo-form">
+    <input type="text" placeholder="Enter the todo here" class="todo-input" />
+    <input type="text" placeholder="Description" class="todo-input" />
+
+    <div class="form-row">
+        <div class="priority-group">
+            <label>Priority:</label>
+            <button class="priority-btn low">❕</button>
+            <button class="priority-btn medium">❕❕</button>
+            <button class="priority-btn high">❕❕❕</button>
+        </div>
+
+        <button class="date-btn">
+            📅 Today
+        </button>
+        <div class="action-buttons">
+            <button class="cancel-btn">Cancel</button>
+            <button class="confirm-btn">Confirm</button>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary">Primary</MudButton>
+        </div>
     </div>
+
+ 
 </div>
 
 @code {
-    
+    private void HandleSubmit(MouseEventArgs e)
+    {
+        // Handle the submit button click event
+        Console.WriteLine("Submit button clicked!");
+    }
 } 
