@@ -2,6 +2,7 @@
 {
     public enum Size
     {
+        XXSmall,
         XSmall,
         Small,
         Medium,

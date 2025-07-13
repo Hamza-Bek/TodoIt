@@ -9,9 +9,14 @@
 }
 
     /* Size variants */
+    .my-btn.xxsmall {
+        font-size: .5rem;
+        padding: 0.5rem 0.5rem;
+    }
+    
     .my-btn.xsmall {
         font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
+        padding: 0.5rem 0.5rem;
     }
     
     .my-btn.small {
@@ -134,7 +139,7 @@
     }
 
     .my-btn.medium {
-        padding-left: 1rem;
+        padding-left: 1rem;        
         padding-right: 1rem;
     }
 
