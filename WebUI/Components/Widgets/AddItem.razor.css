@@ -9,61 +9,199 @@
     flex-direction: column;
     gap: 15px;
     font-family: sans-serif;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .todo-input {
-    padding: 0.5rem ;
+    padding: 0.5rem;
     border: none;
     border-bottom: 2px solid #e0e0e0;
     outline: none;
     font-size: 16px;
-    width:80%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.priority-group {
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
-.priority-btn {
-    padding: .2rem .01rem;    
-    border: none;
-    background-color: #eee;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+.add-todo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
-.date-btn {
-    background-color: #f5f5f5;
-    padding: .5rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.cancel-btn {
+.add-todo-btn {
+    width: 50%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
     background-color: #f0f0f0;
     border: none;
-    color: var(--text-color);
-    padding: .5rem 1rem;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.confirm-btn {
-    background-color: #ffb800;
-    color: white;
-    border: none;
-    padding: .5rem 3rem;
-    border-radius: 4px;
-    cursor: pointer;
+    .add-todo-btn:hover {
+        background-color: #e0e0e0;
+    }
+
+.todo-form-wrapper {        
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(-10px);
+}
+
+    .todo-form-wrapper.show {
+        max-height:fit-content;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .todo-form-wrapper.hide {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.priority-indicators{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 10px;
+}
+
+/* Tablet styles */
+@media (max-width: 740px) {
+    .todo-form {
+        max-width: 70%;
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .priority-group {
+        justify-content: center;
+    }
+    
+    .date-btn {
+        align-self: center;
+        width: fit-content;
+    }
+    
+    .action-buttons {
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .add-todo-btn {
+        width: 70%;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 504px) {
+    .todo-form {
+        max-width: 95%;
+        padding: 12px;
+        margin: 0 10px;
+        gap: 10px;
+    }
+    
+    .todo-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 0.7rem 0.5rem;
+    }
+    
+    .form-row {
+        gap: 12px;
+    }       
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 15px;
+    }
+    
+    .add-todo-btn {
+        width: 90%;
+        padding: 0.7rem;
+        font-size: 1.1rem;
+    }
+    
+    .add-todo-container {
+        padding: 0 10px;
+    }
+}
+
+/* Extra small mobile styles */
+@media (max-width: 360px) {
+    .todo-form {
+        max-width: 98%;
+        margin: 0 5px;
+        padding: 10px;
+    }
+    
+    .priority-group {
+        gap: 6px;
+    }
+    
+    .priority-btn {
+        padding: 0.3rem 0.4rem;
+        font-size: 11px;
+        min-width: 30px;
+    }
+    
+    .date-btn {
+        font-size: 12px;
+        padding: 0.5rem 0.6rem;
+    }
+    
+    .add-todo-btn {
+        width: 95%;
+        font-size: 1rem;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .todo-form {
+        padding: 8px;
+        gap: 8px;
+    }
+    
+    .form-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 8px;
+    }
+    
+    .priority-group {
+        flex-direction: row;
+        gap: 5px;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
 }
